@@ -1,12 +1,9 @@
 package br.edu.femass;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import java.util.List;
-
-import br.edu.femass.dao.DaoProfessor;
-import br.edu.femass.model.Professor;
+import br.edu.femass.dao.DaoAluno;
+import br.edu.femass.dao.DaoAutor;
+import br.edu.femass.model.Aluno;
+import br.edu.femass.model.Autor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,20 +15,23 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-public class FXMLControllerProfessor implements Initializable {
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class FXMLControllerAutor implements Initializable {
     
     @FXML
     private TextField TxtNome;
     
     @FXML
-    private TextField TxtEndereco;
+    private TextField TxtSobrenome;
 
     @FXML
-    private TextField TxtTelefone;
+    private TextField TxtNacionalidade;
+
     @FXML
-    private TextField TxtDisciplina;
-    @FXML
-    private ListView<Professor> LstProfessores;
+    private ListView<Autor> LstAutores;
 
     @FXML
     private Button BtnSalvar;
@@ -48,21 +48,20 @@ public class FXMLControllerProfessor implements Initializable {
     @FXML
     private Button refreshButton;
 
-    private DaoProfessor dao = new DaoProfessor();
-    private Professor professor;
+    private DaoAutor dao = new DaoAutor();
+    private Autor autor;
     private Boolean incluindo;
 
     @FXML
     private void Gravar_Click(ActionEvent event) {
-        professor.setNome(TxtNome.getText());
-        professor.setEndereco(TxtEndereco.getText());
-        professor.setTelefone(TxtTelefone.getText());
-        professor.setDisciplina(TxtDisciplina.getText());
+        autor.setNome(TxtNome.getText());
+        autor.setSobreNome(TxtSobrenome.getText());
+        autor.setNacionalidade(TxtNacionalidade.getText());
 
         if(incluindo){
-            dao.inserir(professor);
+            dao.inserir(autor);
         } else{
-            dao.alterar(professor);
+            dao.alterar(autor);
         }
 
         preencherLista();
@@ -84,8 +83,8 @@ public class FXMLControllerProfessor implements Initializable {
     private void incluir_click(ActionEvent event) {
         editar(true);
         incluindo = true;
-        professor =  new Professor();
-        TxtEndereco.setText("");
+        autor =  new Autor();
+        TxtNacionalidade.setText("");
         TxtNome.setText("");
         TxtNome.requestFocus();
         BtnIncluir.setStyle("-fx-background-color: MediumSeaGreen");
@@ -95,7 +94,7 @@ public class FXMLControllerProfessor implements Initializable {
 
     @FXML
     private void excluir_click(ActionEvent event) {
-        dao.apagar(professor);
+        dao.apagar(autor);
         preencherLista();
         BtnExcluir.setStyle(null);
     }
@@ -115,11 +114,10 @@ public class FXMLControllerProfessor implements Initializable {
     }
 
     private void editar(boolean habilitar){
-        LstProfessores.setDisable(habilitar);
-        TxtEndereco.setDisable(!habilitar);
+        LstAutores.setDisable(habilitar);
+        TxtNacionalidade.setDisable(!habilitar);
         TxtNome.setDisable(!habilitar);
-        TxtTelefone.setDisable(!habilitar);
-        TxtDisciplina.setDisable(!habilitar);
+        TxtSobrenome.setDisable(!habilitar);
         BtnSalvar.setDisable(!habilitar);
         BtnAlterar.setDisable(habilitar);
         BtnIncluir.setDisable(habilitar);
@@ -127,23 +125,22 @@ public class FXMLControllerProfessor implements Initializable {
     }
     
     private void exibirDados(){
-        this.professor =  LstProfessores.getSelectionModel().getSelectedItem();
-        if(professor == null){
+        this.autor =  LstAutores.getSelectionModel().getSelectedItem();
+        if(autor == null){
         BtnExcluir.setStyle(null);
         return;
         }
         BtnExcluir.setStyle("-fx-background-color: Red");
-        TxtNome.setText(professor.getNome());
-        TxtDisciplina.setText(professor.getDisciplina());
-        TxtTelefone.setText(professor.getTelefone());
-        TxtEndereco.setText(professor.getEndereco());
+        TxtNome.setText(autor.getNome());
+        TxtSobrenome.setText(autor.getNome());
+        TxtNacionalidade.setText(autor.getNacionalidade());
     }
 
     private void preencherLista(){
-        List<Professor> professores = dao.buscarTodos();
+        List<Autor> autores = dao.buscarTodos();
 
-        ObservableList<Professor> data =  FXCollections.observableList(professores);
-        LstProfessores.setItems(data);
+        ObservableList<Autor> data =  FXCollections.observableList(autores);
+        LstAutores.setItems(data);
     }
 
     @Override

@@ -133,6 +133,8 @@ public class FXMLControllerAluno implements Initializable {
         }
         BtnExcluir.setStyle("-fx-background-color: Red");
         TxtNome.setText(aluno.getNome());
+        TxtMatricula.setText(aluno.getMatricula());
+        TxtTelefone.setText(aluno.getTelefone());
         TxtEndereco.setText(aluno.getEndereco());
     }
 
