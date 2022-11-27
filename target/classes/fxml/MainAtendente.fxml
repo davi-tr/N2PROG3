@@ -10,10 +10,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="242.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerMain">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="244.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerMainAtendente">
    <children>
       <Button fx:id="BtnCadastrarProfessor" layoutX="54.0" layoutY="64.0" mnemonicParsing="false" onAction="#professorCadastro" prefHeight="25.0" prefWidth="134.0" text="Cadastrar Professor" />
       <Button fx:id="BtnCadastrarAluno" layoutX="54.0" layoutY="28.0" mnemonicParsing="false" onAction="#alunoCadastro" prefHeight="25.0" prefWidth="134.0" text="Cadastrar Aluno" />
-      <Button fx:id="BtnCadastrarAutor" layoutX="54.0" layoutY="98.0" mnemonicParsing="false" onAction="#autorCadastro" prefHeight="25.0" prefWidth="134.0" text="Cadastrar Autor" />
    </children>
 </Pane>

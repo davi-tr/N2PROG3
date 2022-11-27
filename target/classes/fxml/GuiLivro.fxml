@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerLivro">
+   <children>
+      <ListView fx:id="LstAutores" layoutX="14.0" layoutY="32.0" onKeyPressed="#keyPressed_teclaSelecionada" onMouseClicked="#valor_Selecionado" prefHeight="170.0" prefWidth="200.0" />
+      <Label layoutX="275.0" layoutY="18.0" text="Titulo do Livro" />
+      <TextField fx:id="TxtTitulo" layoutX="407.0" layoutY="14.0" />
+      <TextField fx:id="TxtNomeAutor" disable="true" layoutX="407.0" layoutY="48.0" />
+      <Label layoutX="275.0" layoutY="52.0" text="Nome do Autor" />
+      <Button fx:id="BtnSalvar" disable="true" layoutX="508.0" layoutY="162.0" mnemonicParsing="false" onAction="#Gravar_Click" text="Salvar" />
+      <TextField fx:id="TxtSobreNomeAutor" disable="true" layoutX="407.0" layoutY="83.0" />
+      <Label layoutX="275.0" layoutY="87.0" text="Sobrenome do Autor" />
+      <TextField fx:id="TxtNacionalidade" disable="true" layoutX="407.0" layoutY="117.0" />
+      <Label layoutX="275.0" layoutY="121.0" text="Nacionalidade do autor" />
+      <ListView fx:id="LstLivros" layoutX="14.0" layoutY="238.0" prefHeight="170.0" prefWidth="200.0" />
+      <Label layoutX="65.0" layoutY="219.0" text="Livros cadastrados" />
+      <Label layoutX="93.0" layoutY="10.0" text="Autores" />
+   </children>
+</Pane>
