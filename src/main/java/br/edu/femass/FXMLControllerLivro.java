@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -41,7 +42,7 @@ public class FXMLControllerLivro implements Initializable {
     private ListView<Autor> LstAutores;
 
     @FXML
-    private ListView<Livro> LstLivro;
+    private ListView<Livro> LstLivros;
     @FXML
     private Button BtnSalvar;
     @FXML
@@ -49,7 +50,7 @@ public class FXMLControllerLivro implements Initializable {
     DaoAutor dao2 = new DaoAutor();
     private DaoLivro dao = new DaoLivro();
     private Autor autor;
-    private Livro livro;
+    private Livro livro = new Livro();
     private Boolean incluindo;
 
     public FXMLControllerLivro() {
@@ -59,15 +60,11 @@ public class FXMLControllerLivro implements Initializable {
     @FXML
     private void Gravar_Click(ActionEvent event) {
         livro.setTitulo(TxtTitulo.getText());
-        livro.setAutores(LstAutores.getSelectionModel().getSelectedItems());
+        livro.setAutor(LstAutores.getSelectionModel().getSelectedItem());
+        dao.inserir(livro);
 
-        if(incluindo){
-            dao.inserir(livro);
-        } else{
-            dao.alterar(livro);
+        preencherListaLivros();
         }
-        //preencherListaLivros();
-    }
 
     @FXML
     private void keyPressed_teclaSelecionada(KeyEvent event){
@@ -79,16 +76,21 @@ public class FXMLControllerLivro implements Initializable {
     }
     private void exibirDados(){
     this.autor = LstAutores.getSelectionModel().getSelectedItem();
+    if(autor == null){
+       return;
+    }
     TxtNomeAutor.setText(autor.getNome());
     TxtSobreNomeAutor.setText(autor.getSobreNome());
     TxtNacionalidade.setText(autor.getNacionalidade());
+
     }
 
     private void preencherListaLivros(){
         List<Livro> livros = dao.buscarTodos();
 
         ObservableList<Livro> data =  FXCollections.observableList(livros);
-        LstLivro.setItems(data);
+
+        LstLivros.setItems(data);
     }
     private void preencherLista(){
         List<Autor> autores = dao2.buscarTodos();
@@ -100,6 +102,7 @@ public class FXMLControllerLivro implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        // preencherListaLivros();
         preencherLista();
+        preencherListaLivros();
         if(TxtTitulo.getText()!=null){
             BtnSalvar.setDisable(false);
         }

@@ -12,15 +12,14 @@ public class Livro {
     protected Long id;
     protected Long codigo;
     protected String titulo;
-    @OneToMany(cascade = CascadeType.ALL)
-    protected List<Autor> autores;
+    @ManyToOne(cascade = CascadeType.ALL)
+    protected Autor autor;
     public Livro(){
 
     }
 
-    public Livro(String titulo, List<Autor> autores){
-    if(autores == null) autores = new ArrayList<>();
-    autores.addAll(autores);
+    public Livro(String titulo, Autor autor){
+    this.autor = autor;
     this.titulo = titulo;
     }
 
@@ -40,16 +39,18 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public List<Autor> getAutores() {
-        return autores;
+
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 
-    public void setAutores(List<Autor> autores) {
-        this.autores = autores;
+    public Autor getAutor() {
+        return autor;
     }
 
     @Override
     public String toString() {
-        return this.titulo + " " + this.autores;
+        return this.titulo + " | " + this.autor;
     }
 }
