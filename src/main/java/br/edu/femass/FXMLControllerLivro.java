@@ -74,13 +74,14 @@ public class FXMLControllerLivro implements Initializable {
             alert.show();
             return;
         }
-        if(alterar = true){
+        if(alterar == true){
             dao.alterar(livro);
         }else dao.inserir(livro);
         LstAutores.setVisible(false);
         tituloAutores.setVisible(false);
         preencherListaLivros();
         editar(false);
+        LstLivros.setDisable(false);
         }
 
     @FXML
@@ -121,13 +122,17 @@ public class FXMLControllerLivro implements Initializable {
     @FXML
     private void Incluir_Click(ActionEvent event) {
         editar(true);
+        this.livro = new Livro();
+        LstLivros.setDisable(true);
         alterar = false;
         LstAutores.setVisible(true);
         tituloAutores.setVisible(true);
+
     }
     @FXML
     private void Editar_Click(ActionEvent event) {
         editar(true);
+        LstLivros.setDisable(false);
         alterar = true;
         LstAutores.setVisible(true);
         tituloAutores.setVisible(true);
