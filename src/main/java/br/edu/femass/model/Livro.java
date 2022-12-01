@@ -12,6 +12,7 @@ public class Livro {
     protected Long id;
     protected Long codigo;
     protected String titulo;
+    protected String nomeDoautor;
     @ManyToOne(cascade = CascadeType.ALL)
     protected Autor autor;
     public Livro(){
@@ -21,6 +22,10 @@ public class Livro {
     public Livro(String titulo, Autor autor){
     this.autor = autor;
     this.titulo = titulo;
+    }
+
+    public String getNomeDoautor() {
+        return autor.getNome() + " " + autor.getSobreNome();
     }
 
     public Long getCodigo() {
@@ -47,6 +52,10 @@ public class Livro {
 
     public Autor getAutor() {
         return autor;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

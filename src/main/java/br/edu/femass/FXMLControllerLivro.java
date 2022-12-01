@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -37,11 +38,6 @@ public class FXMLControllerLivro implements Initializable {
     private TextField TxtNacionalidade;
 
     @FXML
-    private ListView<Autor> LstAutores;
-
-    @FXML
-    private ListView<Livro> LstLivros;
-    @FXML
     private Button BtnSalvar;
     @FXML
     private Button BtnIncluir;
@@ -50,7 +46,33 @@ public class FXMLControllerLivro implements Initializable {
     @FXML
     private Button BtnExcluir;
     @FXML
+    private Button BtnCancelar;
+    @FXML
     private Button refreshButton;
+
+    @FXML
+    private TableColumn<Livro, Long> idLivro = new TableColumn<>();
+
+    @FXML
+    private TableColumn<Autor, String> sobrenomeAutor = new TableColumn<>();
+
+    @FXML
+    private TableColumn<Livro, String> titulo = new TableColumn<>();
+
+    @FXML
+    private TableColumn<Autor, String> nacionalidadeAutor = new TableColumn<>();
+
+    @FXML
+    private TableView<Autor> tabelaAutores = new TableView<Autor>();
+    @FXML
+    private TableColumn<Autor, String> nomeAutor = new TableColumn<>();
+    @FXML
+    private TableView<Livro> tabelaLivros = new TableView<Livro>();
+
+    @FXML
+    private TableColumn<Livro, String> nomeDoAutor = new TableColumn<>();
+    @FXML
+    private ProgressIndicator progresso;
     DaoAutor dao2 = new DaoAutor();
     @FXML
     private Label tituloAutores;
@@ -66,7 +88,7 @@ public class FXMLControllerLivro implements Initializable {
     @FXML
     private void Gravar_Click(ActionEvent event) {
         livro.setTitulo(TxtTitulo.getText());
-        livro.setAutor(LstAutores.getSelectionModel().getSelectedItem());
+        livro.setAutor(tabelaAutores.getSelectionModel().getSelectedItem());
         if(autor == null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
@@ -77,12 +99,24 @@ public class FXMLControllerLivro implements Initializable {
         if(alterar == true){
             dao.alterar(livro);
         }else dao.inserir(livro);
-        LstAutores.setVisible(false);
+        tabelaAutores.setVisible(false);
         tituloAutores.setVisible(false);
-        preencherListaLivros();
+        preencherTabelaLivros();
         editar(false);
-        LstLivros.setDisable(false);
+        tabelaLivros.setDisable(false);
+        progresso.setProgress(1);
         }
+    @FXML
+    void Cancelar_Click(ActionEvent event) {
+        editar(false);
+        autor = null;
+        livro = null;
+        BtnExcluir.setDisable(true);
+        if (tabelaLivros.isDisable()){
+            tabelaLivros.setDisable(false);
+        }
+        progresso.setProgress(0);
+    }
 
     @FXML
     private void keyPressed_teclaSelecionada(KeyEvent event){
@@ -93,7 +127,7 @@ public class FXMLControllerLivro implements Initializable {
         exibirDados();
     }
     private void exibirDados(){
-    this.autor = LstAutores.getSelectionModel().getSelectedItem();
+    this.autor = tabelaAutores.getSelectionModel().getSelectedItem();
     if(autor == null){
        return;
     }
@@ -103,7 +137,7 @@ public class FXMLControllerLivro implements Initializable {
 
     }
     private void exibirDadosLivro(){
-        this.livro = LstLivros.getSelectionModel().getSelectedItem();
+        this.livro = tabelaLivros.getSelectionModel().getSelectedItem();
         if(livro == null){
             return;
         }
@@ -114,6 +148,9 @@ public class FXMLControllerLivro implements Initializable {
     }
     @FXML
     private void livro_selecionado(MouseEvent event){
+        if (this.livro !=null){
+            BtnExcluir.setDisable(false);
+        }
         BtnExcluir.setDisable(false);
         BtnAlterar.setDisable(false);
         exibirDadosLivro();
@@ -123,56 +160,81 @@ public class FXMLControllerLivro implements Initializable {
     private void Incluir_Click(ActionEvent event) {
         editar(true);
         this.livro = new Livro();
-        LstLivros.setDisable(true);
+        tabelaLivros.setDisable(true);
         alterar = false;
-        LstAutores.setVisible(true);
+        tabelaAutores.setVisible(true);
         tituloAutores.setVisible(true);
+        TxtNacionalidade.setText("");
+        TxtTitulo.setText("");
+        TxtSobreNomeAutor.setText("");
+        TxtNomeAutor.setText("");
+        progresso.setProgress(0);
 
     }
     @FXML
     private void Editar_Click(ActionEvent event) {
         editar(true);
-        LstLivros.setDisable(false);
+        tabelaLivros.setDisable(false);
         alterar = true;
-        LstAutores.setVisible(true);
+        tabelaAutores.setVisible(true);
         tituloAutores.setVisible(true);
         exibirDadosLivro();
+        progresso.setProgress(.50);
     }
     @FXML
     private void Excluir_Click(ActionEvent event) {
         dao.apagar(livro);
-        preencherListaLivros();
+        preencherTabelaLivros();
     }
-    private void preencherListaLivros(){
+    private void preencherTabelaLivros(){
         List<Livro> livros = dao.buscarTodos();
 
         ObservableList<Livro> data =  FXCollections.observableList(livros);
 
-        LstLivros.setItems(data);
+        tabelaLivros.setItems(data);
     }
-    private void preencherLista(){
+    private void preencherTabela(){
         List<Autor> autores = dao2.buscarTodos();
         ObservableList<Autor> data =  FXCollections.observableList(autores);
-        LstAutores.setItems(data);
+        tabelaAutores.setItems(data);
     }
 
     private void editar(boolean habilitar){
-        LstAutores.setDisable(!habilitar);
+        tabelaAutores.setDisable(!habilitar);
         TxtTitulo.setDisable(!habilitar);
         BtnSalvar.setDisable(!habilitar);
         BtnAlterar.setDisable(habilitar);
         BtnIncluir.setDisable(habilitar);
         BtnExcluir.setDisable(habilitar);
+        BtnCancelar.setDisable(!habilitar);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        // preencherListaLivros();
-        preencherLista();
-        preencherListaLivros();
+        nomeDoAutor.setCellValueFactory(
+                new PropertyValueFactory<Livro, String>("nomeDoautor")
+        );
+        nomeAutor.setCellValueFactory(
+                new PropertyValueFactory<Autor, String>("nome")
+        );
+        nacionalidadeAutor.setCellValueFactory(
+                new PropertyValueFactory<Autor, String>("nacionalidade")
+        );
+        titulo.setCellValueFactory(
+                new PropertyValueFactory<Livro, String>("titulo")
+        );
+        sobrenomeAutor.setCellValueFactory(
+                new PropertyValueFactory<Autor, String>("sobreNome")
+        );
+        idLivro.setCellValueFactory(
+                new PropertyValueFactory<Livro, Long>("id")
+        );
+
+        preencherTabela();
+        preencherTabelaLivros();
         BtnIncluir.setDisable(false);
-        LstAutores.setDisable(true);
-        LstAutores.setVisible(false);
         tituloAutores.setVisible(false);
+        tabelaAutores.setVisible(false);
     }
 }
