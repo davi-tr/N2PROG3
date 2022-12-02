@@ -4,6 +4,7 @@ import br.edu.femass.dao.DaoAutor;
 import br.edu.femass.dao.DaoLivro;
 import br.edu.femass.model.Autor;
 import br.edu.femass.model.Livro;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,6 +48,8 @@ public class FXMLControllerLivro implements Initializable {
     private Button BtnExcluir;
     @FXML
     private Button BtnCancelar;
+    @FXML
+    private Button BtnVoltar;
     @FXML
     private Button refreshButton;
 
@@ -106,6 +109,10 @@ public class FXMLControllerLivro implements Initializable {
         tabelaLivros.setDisable(false);
         progresso.setProgress(1);
         }
+    @FXML
+    void Voltar_Click(ActionEvent event) {
+        Platform.exit();
+    }
     @FXML
     void Cancelar_Click(ActionEvent event) {
         editar(false);
@@ -185,6 +192,7 @@ public class FXMLControllerLivro implements Initializable {
     private void Excluir_Click(ActionEvent event) {
         dao.apagar(livro);
         preencherTabelaLivros();
+        progresso.setProgress(0);
     }
     private void preencherTabelaLivros(){
         List<Livro> livros = dao.buscarTodos();

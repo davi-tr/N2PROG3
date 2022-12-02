@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
@@ -15,58 +16,63 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerLivro">
    <children>
-      <Label layoutX="753.0" layoutY="42.0" text="Titulo do Livro" />
-      <TextField fx:id="TxtTitulo" disable="true" layoutX="885.0" layoutY="38.0" />
-      <TextField fx:id="TxtNomeAutor" disable="true" layoutX="885.0" layoutY="72.0" />
-      <Label layoutX="753.0" layoutY="76.0" text="Nome do Autor" />
-      <Button fx:id="BtnSalvar" disable="true" layoutX="986.0" layoutY="186.0" mnemonicParsing="false" onAction="#Gravar_Click" style="-fx-background-color: green;" text="Salvar">
+      <Label layoutX="754.0" layoutY="63.0" text="Titulo do Livro" />
+      <TextField fx:id="TxtTitulo" disable="true" layoutX="886.0" layoutY="59.0" />
+      <TextField fx:id="TxtNomeAutor" disable="true" layoutX="886.0" layoutY="93.0" />
+      <Label layoutX="754.0" layoutY="97.0" text="Nome do Autor" />
+      <Button id="button" fx:id="BtnSalvar" disable="true" layoutX="987.0" layoutY="207.0" mnemonicParsing="false" onAction="#Gravar_Click" style="-fx-background-color: green;" text="Salvar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <TextField fx:id="TxtSobreNomeAutor" disable="true" layoutX="885.0" layoutY="107.0" />
-      <Label layoutX="753.0" layoutY="111.0" text="Sobrenome do Autor" />
-      <TextField fx:id="TxtNacionalidade" disable="true" layoutX="885.0" layoutY="141.0" />
-      <Label layoutX="753.0" layoutY="145.0" text="Nacionalidade do autor" />
-      <Label layoutX="498.0" layoutY="12.0" text="Livros cadastrados" />
-      <Label fx:id="tituloAutores" layoutX="143.0" layoutY="12.0" text="Autores" />
-      <Button fx:id="BtnIncluir" disable="true" layoutX="397.0" layoutY="573.0" mnemonicParsing="false" onAction="#Incluir_Click" style="-fx-background-color: cyan;" text="Incluir">
+      <TextField fx:id="TxtSobreNomeAutor" disable="true" layoutX="886.0" layoutY="128.0" />
+      <Label layoutX="754.0" layoutY="132.0" text="Sobrenome do Autor" />
+      <TextField fx:id="TxtNacionalidade" disable="true" layoutX="886.0" layoutY="162.0" />
+      <Label layoutX="754.0" layoutY="166.0" text="Nacionalidade do autor" />
+      <Label layoutX="498.0" layoutY="33.0" text="Livros cadastrados" />
+      <Label fx:id="tituloAutores" layoutX="143.0" layoutY="33.0" text="Autores" />
+      <Button id="button" fx:id="BtnIncluir" disable="true" focusTraversable="false" layoutX="397.0" layoutY="594.0" mnemonicParsing="false" onAction="#Incluir_Click" style="-fx-background-color: cyan;" text="Incluir">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="BtnAlterar" disable="true" layoutX="524.0" layoutY="573.0" mnemonicParsing="false" onAction="#Editar_Click" style="-fx-background-color: yellow;" text="Editar">
+      <Button id="button" fx:id="BtnAlterar" disable="true" layoutX="524.0" layoutY="594.0" mnemonicParsing="false" onAction="#Editar_Click" style="-fx-background-color: yellow;" text="Editar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="BtnExcluir" disable="true" layoutX="642.0" layoutY="573.0" mnemonicParsing="false" onAction="#Excluir_Click" style="-fx-background-color: red;" text="Apagar">
+      <Button id="button" fx:id="BtnExcluir" disable="true" layoutX="642.0" layoutY="594.0" mnemonicParsing="false" onAction="#Excluir_Click" style="-fx-background-color: red;" text="Apagar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TableView fx:id="tabelaLivros" layoutX="397.0" layoutY="38.0" onMouseClicked="#livro_selecionado" prefHeight="511.0" prefWidth="300.0">
+      <TableView fx:id="tabelaLivros" layoutX="397.0" layoutY="59.0" onMouseClicked="#livro_selecionado" prefHeight="511.0" prefWidth="300.0">
         <columns>
           <TableColumn fx:id="idLivro" prefWidth="58.0" text="ID" />
           <TableColumn fx:id="titulo" prefWidth="128.0" text="Titulo" />
             <TableColumn fx:id="nomeDoAutor" prefWidth="113.0" text="Nome do Autor" />
         </columns>
       </TableView>
-      <TableView fx:id="tabelaAutores" layoutX="14.0" layoutY="38.0" onKeyPressed="#keyPressed_teclaSelecionada" onMouseClicked="#valor_Selecionado" prefHeight="511.0" prefWidth="300.0">
+      <TableView fx:id="tabelaAutores" layoutX="14.0" layoutY="59.0" onKeyPressed="#keyPressed_teclaSelecionada" onMouseClicked="#valor_Selecionado" prefHeight="511.0" prefWidth="300.0">
          <columns>
             <TableColumn fx:id="nomeAutor" prefWidth="58.0" text="Nome" />
             <TableColumn fx:id="sobrenomeAutor" prefWidth="128.0" text="Sobrenome" />
             <TableColumn fx:id="nacionalidadeAutor" prefWidth="113.0" text="Nacionalidade" />
          </columns>
       </TableView>
-      <Button fx:id="BtnCancelar" disable="true" layoutX="915.0" layoutY="186.0" mnemonicParsing="false" onAction="#Cancelar_Click" style="-fx-background-color: red;" text="Cancelar">
+      <Button id="button" fx:id="BtnCancelar" disable="true" layoutX="916.0" layoutY="207.0" mnemonicParsing="false" onAction="#Cancelar_Click" style="-fx-background-color: red;" text="Cancelar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ProgressIndicator fx:id="progresso" layoutX="841.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="150.0" progress="0.0">
+      <ProgressIndicator fx:id="progresso" layoutX="842.0" layoutY="284.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="150.0" progress="0.0">
          <cursor>
             <Cursor fx:constant="NONE" />
          </cursor>
       </ProgressIndicator>
+      <Button id="button" fx:id="BtnVoltar" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#Voltar_Click" style="-fx-background-color: orange;" text="Voltar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>

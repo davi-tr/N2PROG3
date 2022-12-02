@@ -6,15 +6,16 @@ import java.util.ResourceBundle;
 import java.util.List;
 
 import br.edu.femass.dao.DaoProfessor;
+import br.edu.femass.model.Autor;
 import br.edu.femass.model.Professor;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -30,8 +31,7 @@ public class FXMLControllerProfessor implements Initializable {
     private TextField TxtTelefone;
     @FXML
     private TextField TxtDisciplina;
-    @FXML
-    private ListView<Professor> LstProfessores;
+
 
     @FXML
     private Button BtnSalvar;
@@ -44,9 +44,23 @@ public class FXMLControllerProfessor implements Initializable {
     
     @FXML
     private Button BtnExcluir;
-
+    @FXML
+    private Button BtnVoltar;
     @FXML
     private Button refreshButton;
+
+    @FXML
+    private TableView<Professor> TabelaProfessores = new TableView<Professor>();
+    @FXML
+    private TableColumn<Professor, String> telefone = new TableColumn<>();
+    @FXML
+    private TableColumn<Professor, String> endereco = new TableColumn<>();
+    @FXML
+    private TableColumn<Professor, String> nome = new TableColumn<>();
+    @FXML
+    private TableColumn<Professor, String> disciplina = new TableColumn<>();
+    @FXML
+    private TableColumn<Professor, Long> id = new TableColumn<>();
 
     private DaoProfessor dao = new DaoProfessor();
     private Professor professor;
@@ -67,9 +81,10 @@ public class FXMLControllerProfessor implements Initializable {
 
         preencherLista();
         editar(false);
-        BtnIncluir.setStyle(null);
-        BtnAlterar.setStyle(null);
-        BtnExcluir.setStyle(null);
+    }
+    @FXML
+    void Voltar_Click(ActionEvent event) {
+        Platform.exit();
     }
     
     @FXML
@@ -77,8 +92,8 @@ public class FXMLControllerProfessor implements Initializable {
         editar(true);
         incluindo = true;
         BtnAlterar.setStyle("-fx-background-color: Yellow");
-        BtnExcluir.setStyle(null);
     }
+
 
     @FXML
     private void incluir_click(ActionEvent event) {
@@ -87,9 +102,9 @@ public class FXMLControllerProfessor implements Initializable {
         professor =  new Professor();
         TxtEndereco.setText("");
         TxtNome.setText("");
+        TxtDisciplina.setText("");
+        TxtTelefone.setText("");
         TxtNome.requestFocus();
-        BtnIncluir.setStyle("-fx-background-color: MediumSeaGreen");
-        BtnExcluir.setStyle(null);
 
     }
 
@@ -97,7 +112,6 @@ public class FXMLControllerProfessor implements Initializable {
     private void excluir_click(ActionEvent event) {
         dao.apagar(professor);
         preencherLista();
-        BtnExcluir.setStyle(null);
     }
 
     @FXML
@@ -115,7 +129,7 @@ public class FXMLControllerProfessor implements Initializable {
     }
 
     private void editar(boolean habilitar){
-        LstProfessores.setDisable(habilitar);
+        TabelaProfessores.setDisable(habilitar);
         TxtEndereco.setDisable(!habilitar);
         TxtNome.setDisable(!habilitar);
         TxtTelefone.setDisable(!habilitar);
@@ -127,9 +141,8 @@ public class FXMLControllerProfessor implements Initializable {
     }
     
     private void exibirDados(){
-        this.professor =  LstProfessores.getSelectionModel().getSelectedItem();
+        this.professor =  TabelaProfessores.getSelectionModel().getSelectedItem();
         if(professor == null){
-        BtnExcluir.setStyle(null);
         return;
         }
         BtnExcluir.setStyle("-fx-background-color: Red");
@@ -143,11 +156,16 @@ public class FXMLControllerProfessor implements Initializable {
         List<Professor> professores = dao.buscarTodos();
 
         ObservableList<Professor> data =  FXCollections.observableList(professores);
-        LstProfessores.setItems(data);
+        TabelaProfessores.setItems(data);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         preencherLista();
+        id.setCellValueFactory(new PropertyValueFactory<Professor, Long>("id"));
+        nome.setCellValueFactory(new PropertyValueFactory<Professor, String>("nome"));
+        endereco.setCellValueFactory(new PropertyValueFactory<Professor, String>("endereco"));
+        telefone.setCellValueFactory(new PropertyValueFactory<Professor, String>("telefone"));
+        disciplina.setCellValueFactory(new PropertyValueFactory<Professor, String>("disciplina"));
     }    
 }
