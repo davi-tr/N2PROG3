@@ -111,7 +111,8 @@ public class FXMLControllerLivro implements Initializable {
         }
     @FXML
     void Voltar_Click(ActionEvent event) {
-        Platform.exit();
+        Stage stage = (Stage) BtnVoltar.getScene().getWindow();
+        stage.close();
     }
     @FXML
     void Cancelar_Click(ActionEvent event) {

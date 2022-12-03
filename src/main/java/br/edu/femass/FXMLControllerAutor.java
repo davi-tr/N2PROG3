@@ -4,16 +4,17 @@ import br.edu.femass.dao.DaoAluno;
 import br.edu.femass.dao.DaoAutor;
 import br.edu.femass.model.Aluno;
 import br.edu.femass.model.Autor;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.List;
@@ -31,9 +32,6 @@ public class FXMLControllerAutor implements Initializable {
     private TextField TxtNacionalidade;
 
     @FXML
-    private ListView<Autor> LstAutores;
-
-    @FXML
     private Button BtnSalvar;
 
     @FXML
@@ -44,9 +42,21 @@ public class FXMLControllerAutor implements Initializable {
     
     @FXML
     private Button BtnExcluir;
+    @FXML
+    private Button BtnVoltar;
 
     @FXML
     private Button refreshButton;
+    @FXML
+    private TableView<Autor> TabelaAutores = new TableView<Autor>();
+    @FXML
+    private TableColumn<Autor, Long> id = new TableColumn<>();
+    @FXML
+    private TableColumn<Autor, String> sobrenome = new TableColumn<>();
+    @FXML
+    private TableColumn<Autor, String> nacionalidade = new TableColumn<>();
+    @FXML
+    private TableColumn<Autor, String> nome = new TableColumn<>();
 
     private DaoAutor dao = new DaoAutor();
     private Autor autor;
@@ -70,12 +80,15 @@ public class FXMLControllerAutor implements Initializable {
         BtnAlterar.setStyle(null);
         BtnExcluir.setStyle(null);
     }
-    
+    @FXML
+    void Voltar_Click(ActionEvent event) {
+        Stage stage = (Stage) BtnVoltar.getScene().getWindow();
+        stage.close();
+    }
     @FXML
     private void altera_click(ActionEvent event) {
         editar(true);
         incluindo = true;
-        BtnAlterar.setStyle("-fx-background-color: Yellow");
         BtnExcluir.setStyle(null);
     }
 
@@ -87,7 +100,6 @@ public class FXMLControllerAutor implements Initializable {
         TxtNacionalidade.setText("");
         TxtNome.setText("");
         TxtNome.requestFocus();
-        BtnIncluir.setStyle("-fx-background-color: MediumSeaGreen");
         BtnExcluir.setStyle(null);
 
     }
@@ -114,7 +126,7 @@ public class FXMLControllerAutor implements Initializable {
     }
 
     private void editar(boolean habilitar){
-        LstAutores.setDisable(habilitar);
+        TabelaAutores.setDisable(habilitar);
         TxtNacionalidade.setDisable(!habilitar);
         TxtNome.setDisable(!habilitar);
         TxtSobrenome.setDisable(!habilitar);
@@ -125,12 +137,11 @@ public class FXMLControllerAutor implements Initializable {
     }
     
     private void exibirDados(){
-        this.autor =  LstAutores.getSelectionModel().getSelectedItem();
+        this.autor =  TabelaAutores.getSelectionModel().getSelectedItem();
         if(autor == null){
         BtnExcluir.setStyle(null);
         return;
         }
-        BtnExcluir.setStyle("-fx-background-color: Red");
         TxtNome.setText(autor.getNome());
         TxtSobrenome.setText(autor.getNome());
         TxtNacionalidade.setText(autor.getNacionalidade());
@@ -140,11 +151,15 @@ public class FXMLControllerAutor implements Initializable {
         List<Autor> autores = dao.buscarTodos();
 
         ObservableList<Autor> data =  FXCollections.observableList(autores);
-        LstAutores.setItems(data);
+        TabelaAutores.setItems(data);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         preencherLista();
+        id.setCellValueFactory(new PropertyValueFactory<Autor, Long>("id"));
+        nome.setCellValueFactory(new PropertyValueFactory<Autor, String>("nome"));
+        sobrenome.setCellValueFactory(new PropertyValueFactory<Autor, String>("sobreNome"));
+        nacionalidade.setCellValueFactory(new PropertyValueFactory<Autor, String>("nacionalidade"));
     }    
 }

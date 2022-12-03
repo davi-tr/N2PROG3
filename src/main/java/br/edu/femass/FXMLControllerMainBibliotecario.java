@@ -23,13 +23,13 @@ public class FXMLControllerMainBibliotecario implements Initializable {
     @FXML
     private void livroCadastro(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/GuiAluno.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/GuiLivro.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add("/styles/Styles.css");
             scene.getRoot().setStyle("-fx-font-family: 'serif'");
 
             Stage stage = new Stage();
-            stage.setTitle("Cadastro Aluno");
+            stage.setTitle("Proj Biblioteca");
             stage.setScene(scene);
             stage.show();
         } catch (Exception e){

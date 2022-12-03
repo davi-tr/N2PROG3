@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class FXMLControllerProfessor implements Initializable {
     
@@ -84,7 +85,8 @@ public class FXMLControllerProfessor implements Initializable {
     }
     @FXML
     void Voltar_Click(ActionEvent event) {
-        Platform.exit();
+        Stage stage = (Stage) BtnVoltar.getScene().getWindow();
+        stage.close();
     }
     
     @FXML
