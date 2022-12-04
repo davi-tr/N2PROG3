@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+// TODO: 04/12/2022 Resolver bug relacionado a exibição da tabela após uma alteração no banco 
 public class FXMLControllerAluno implements Initializable {
     
     @FXML
@@ -164,5 +165,6 @@ public class FXMLControllerAluno implements Initializable {
         endereco.setCellValueFactory(new PropertyValueFactory<Aluno, String>("endereco"));
         matricula.setCellValueFactory(new PropertyValueFactory<Aluno, String>("matricula"));
         prazo.setCellValueFactory(new PropertyValueFactory<Aluno, Integer>("prazoMaximoDev"));
+        
     }    
 }
