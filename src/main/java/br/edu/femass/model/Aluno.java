@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 public class Aluno extends Leitor {
     protected String matricula;
     public Aluno(){
-
+        prazoMaximoDev = 15;
     }
 
     public Aluno(String nome, String endereco, String telefone, String matricula){
@@ -25,8 +25,9 @@ public class Aluno extends Leitor {
         return matricula;
     }
 
+
     @Override
     public String toString() {
-        return this.nome + " " + this.matricula;
+        return this.nome + " " + this.matricula+ " " + this.endereco+ " " + this.telefone;
     }
 }

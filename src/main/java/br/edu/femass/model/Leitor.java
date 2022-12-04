@@ -1,11 +1,9 @@
 package br.edu.femass.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Leitor {
 
     @Id
@@ -46,7 +44,9 @@ public class Leitor {
         return id;
     }
 
-    
+    public Integer getPrazoMaximoDev() {
+        return prazoMaximoDev;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -54,12 +54,6 @@ public class Leitor {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    @Override
-    public String toString() {
-        // TODO Auto-generated method stub
-        return this.nome + " " + this.telefone;
     }
 
 }

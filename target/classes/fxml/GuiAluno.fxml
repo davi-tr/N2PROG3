@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -10,21 +11,35 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerAluno">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="588.0" prefWidth="885.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerAluno">
    <children>
-      <ListView fx:id="LstAlunos" layoutX="14.0" layoutY="14.0" onKeyPressed="#keyPressed_teclaSelecionada" onMouseClicked="#valor_Selecionado" prefHeight="320.0" prefWidth="200.0" />
-      <Label layoutX="330.0" layoutY="19.0" text="Nome" />
-      <TextField fx:id="TxtNome" disable="true" layoutX="407.0" layoutY="14.0" />
-      <TextField fx:id="TxtEndereco" disable="true" layoutX="407.0" layoutY="48.0" />
-      <Label layoutX="330.0" layoutY="53.0" text="Endereço" />
-      <Button fx:id="BtnSalvar" disable="true" layoutX="508.0" layoutY="162.0" mnemonicParsing="false" onAction="#Gravar_Click" text="Salvar" />
-      <Button fx:id="BtnIncluir" layoutX="15.0" layoutY="361.0" mnemonicParsing="false" onAction="#incluir_click" text="Incluir" />
-      <Button fx:id="BtnAlterar" layoutX="88.0" layoutY="361.0" mnemonicParsing="false" onAction="#altera_click" text="Alterar" />
-      <Button fx:id="BtnExcluir" layoutX="162.0" layoutY="361.0" mnemonicParsing="false" onAction="#excluir_click" text="Exluir" />
-      <Button fx:id="refreshButton" layoutX="407.0" layoutY="162.0" mnemonicParsing="false" onAction="#recarregar_click" text="Refresh" />
-      <TextField fx:id="TxtTelefone" disable="true" layoutX="407.0" layoutY="83.0" />
-      <Label layoutX="330.0" layoutY="87.0" text="Telefone" />
-      <TextField fx:id="TxtMatricula" disable="true" layoutX="407.0" layoutY="117.0" />
-      <Label layoutX="332.0" layoutY="121.0" text="Matricula" />
+      <Label layoutX="608.0" layoutY="57.0" text="Nome" />
+      <TextField fx:id="TxtNome" disable="true" layoutX="685.0" layoutY="52.0" />
+      <TextField fx:id="TxtEndereco" disable="true" layoutX="685.0" layoutY="86.0" />
+      <TextField fx:id="TxtTelefone" disable="true" layoutX="685.0" layoutY="121.0" />
+      <TextField fx:id="TxtMatricula" disable="true" layoutX="685.0" layoutY="155.0" />
+      <Label layoutX="608.0" layoutY="91.0" text="Endereço" />
+      <Button fx:id="BtnSalvar" disable="true" layoutX="786.0" layoutY="200.0" mnemonicParsing="false" onAction="#Gravar_Click" style="-fx-background-color: green;" text="Salvar" />
+      <Button id="button" fx:id="BtnIncluir" layoutX="37.0" layoutY="539.0" mnemonicParsing="false" onAction="#incluir_click" style="-fx-background-color: cyan;" text="Incluir" />
+      <Button id="button" fx:id="BtnAlterar" layoutX="250.0" layoutY="539.0" mnemonicParsing="false" onAction="#altera_click" style="-fx-background-color: yellow;" text="Alterar" />
+      <Button id="button" fx:id="BtnExcluir" layoutX="468.0" layoutY="539.0" mnemonicParsing="false" onAction="#excluir_click" style="-fx-background-color: red;" text="Exluir" />
+      <Button fx:id="refreshButton" layoutX="685.0" layoutY="200.0" mnemonicParsing="false" onAction="#recarregar_click" style="-fx-background-color: #8766E8;" text="Refresh" />
+      <Label layoutX="608.0" layoutY="125.0" text="Telefone" />
+      <Label layoutX="610.0" layoutY="159.0" text="Matricula" />
+      <TableView fx:id="tabelaAlunos" layoutX="38.0" layoutY="52.0" onKeyPressed="#keyPressed_teclaSelecionada" onMouseClicked="#valor_Selecionado" prefHeight="471.0" prefWidth="475.0">
+        <columns>
+            <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="nome" prefWidth="75.0" text="Nome" />
+          <TableColumn fx:id="endereco" prefWidth="75.0" text="Endereço" />
+            <TableColumn fx:id="telefone" prefWidth="75.0" text="Telefone" />
+            <TableColumn fx:id="matricula" prefWidth="75.0" text="Matricula" />
+            <TableColumn fx:id="prazo" prefWidth="99.0" text="Prazo devoluçao" />
+        </columns>
+      </TableView>
+      <Button id="button" fx:id="BtnVoltar" layoutX="37.0" layoutY="14.0" mnemonicParsing="false" onAction="#Voltar_Click" style="-fx-background-color: orange;" text="Voltar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>

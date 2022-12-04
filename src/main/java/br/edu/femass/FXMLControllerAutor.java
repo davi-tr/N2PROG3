@@ -76,9 +76,6 @@ public class FXMLControllerAutor implements Initializable {
 
         preencherLista();
         editar(false);
-        BtnIncluir.setStyle(null);
-        BtnAlterar.setStyle(null);
-        BtnExcluir.setStyle(null);
     }
     @FXML
     void Voltar_Click(ActionEvent event) {
@@ -89,7 +86,6 @@ public class FXMLControllerAutor implements Initializable {
     private void altera_click(ActionEvent event) {
         editar(true);
         incluindo = true;
-        BtnExcluir.setStyle(null);
     }
 
     @FXML
@@ -100,7 +96,6 @@ public class FXMLControllerAutor implements Initializable {
         TxtNacionalidade.setText("");
         TxtNome.setText("");
         TxtNome.requestFocus();
-        BtnExcluir.setStyle(null);
 
     }
 
@@ -108,7 +103,6 @@ public class FXMLControllerAutor implements Initializable {
     private void excluir_click(ActionEvent event) {
         dao.apagar(autor);
         preencherLista();
-        BtnExcluir.setStyle(null);
     }
 
     @FXML

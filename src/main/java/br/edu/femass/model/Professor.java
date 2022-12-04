@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 public class Professor extends Leitor {
     protected String disciplina;
     public Professor(){
-
+        prazoMaximoDev = 30;
     }
 
     public Professor(String nome, String endereco, String telefone, String disciplina){

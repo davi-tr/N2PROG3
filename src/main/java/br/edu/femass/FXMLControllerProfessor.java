@@ -93,7 +93,6 @@ public class FXMLControllerProfessor implements Initializable {
     private void altera_click(ActionEvent event) {
         editar(true);
         incluindo = true;
-        BtnAlterar.setStyle("-fx-background-color: Yellow");
     }
 
 
@@ -147,7 +146,6 @@ public class FXMLControllerProfessor implements Initializable {
         if(professor == null){
         return;
         }
-        BtnExcluir.setStyle("-fx-background-color: Red");
         TxtNome.setText(professor.getNome());
         TxtDisciplina.setText(professor.getDisciplina());
         TxtTelefone.setText(professor.getTelefone());
