@@ -1,21 +1,18 @@
 package br.edu.femass;
 
-import br.edu.femass.dao.DaoAluno;
-import br.edu.femass.model.Aluno;
+import br.edu.femass.model.Exemplar;
 import br.edu.femass.model.Livro;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 // TODO: 04/12/2022 Finalizar implementação classe Exemplar
@@ -49,14 +46,18 @@ public class FXMLControllerExemplar implements Initializable {
     private TableView<Exemplar> tabelaExemplar;
 
     @FXML
-    private TableColumn<Livro, String> nomeDoAutor;
+    private TableColumn<Exemplar, String> nomeDoAutor;
 
     @FXML
     private Button BtnAlterar;
 
     @FXML
-    void Gravar_Click(ActionEvent event) {
+    private ImageView finalizado;
 
+
+    @FXML
+    void Gravar_Click(ActionEvent event) {
+        finalizado.setVisible(true);
     }
 
     @FXML
@@ -85,13 +86,18 @@ public class FXMLControllerExemplar implements Initializable {
     }
 
     @FXML
-    void Voltar_Click(ActionEvent event) {
+    void keyPressed_teclaSelecionada(ActionEvent event) {
 
     }
 
-}
+    @FXML
+    void Voltar_Click(ActionEvent event) {
+        Stage stage = (Stage) BtnVoltar.getScene().getWindow();
+        stage.close();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+        finalizado.setVisible(false);
+    }
 }
