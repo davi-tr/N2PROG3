@@ -8,7 +8,7 @@ import java.util.List;
 public class Livro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     protected Long id;
     protected Long codigo;
     protected String titulo;

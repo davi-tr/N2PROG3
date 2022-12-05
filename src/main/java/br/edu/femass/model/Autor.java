@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Autor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     protected Long id;
     protected String nome;
     protected String sobreNome;

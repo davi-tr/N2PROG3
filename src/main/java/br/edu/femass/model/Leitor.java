@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Leitor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     protected Long id;
     protected String nome;
     protected String endereco;
