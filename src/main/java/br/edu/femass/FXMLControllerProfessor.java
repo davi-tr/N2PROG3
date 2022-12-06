@@ -92,7 +92,7 @@ public class FXMLControllerProfessor implements Initializable {
     @FXML
     private void altera_click(ActionEvent event) {
         editar(true);
-        incluindo = true;
+        incluindo = false;
     }
 
 
@@ -157,6 +157,7 @@ public class FXMLControllerProfessor implements Initializable {
 
         ObservableList<Professor> data =  FXCollections.observableList(professores);
         TabelaProfessores.setItems(data);
+        TabelaProfessores.refresh();
     }
 
     @Override

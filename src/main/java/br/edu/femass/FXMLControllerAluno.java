@@ -153,6 +153,7 @@ public class FXMLControllerAluno implements Initializable {
 
         ObservableList<Aluno> data =  FXCollections.observableList(alunos);
         tabelaAlunos.setItems(data);
+        tabelaAlunos.refresh();
 
     }
     

@@ -28,6 +28,6 @@ public class Aluno extends Leitor {
 
     @Override
     public String toString() {
-        return this.nome + " " + this.matricula+ " " + this.endereco+ " " + this.telefone;
+        return this.nome;
     }
 }

@@ -85,7 +85,7 @@ public class FXMLControllerAutor implements Initializable {
     @FXML
     private void altera_click(ActionEvent event) {
         editar(true);
-        incluindo = true;
+        incluindo = false;
     }
 
     @FXML
@@ -137,7 +137,7 @@ public class FXMLControllerAutor implements Initializable {
         return;
         }
         TxtNome.setText(autor.getNome());
-        TxtSobrenome.setText(autor.getNome());
+        TxtSobrenome.setText(autor.getSobreNome());
         TxtNacionalidade.setText(autor.getNacionalidade());
     }
 
@@ -146,6 +146,7 @@ public class FXMLControllerAutor implements Initializable {
 
         ObservableList<Autor> data =  FXCollections.observableList(autores);
         TabelaAutores.setItems(data);
+        TabelaAutores.refresh();
     }
 
     @Override

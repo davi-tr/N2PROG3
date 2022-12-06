@@ -37,6 +37,11 @@ public class FXMLControllerLivro implements Initializable {
 
     @FXML
     private TextField TxtNacionalidade;
+    @FXML
+    private TextField txtQuantidade;
+
+    @FXML
+    private Label labelQtd;
 
     @FXML
     private Button BtnSalvar;
@@ -99,9 +104,10 @@ public class FXMLControllerLivro implements Initializable {
             alert.show();
             return;
         }
-        if(alterar == true){
+        if(alterar){
             dao.alterar(livro);
         }else dao.inserir(livro);
+
         tabelaAutores.setVisible(false);
         tituloAutores.setVisible(false);
         preencherTabelaLivros();
@@ -149,10 +155,12 @@ public class FXMLControllerLivro implements Initializable {
         if(livro == null){
             return;
         }
+
         TxtTitulo.setText(livro.getTitulo());
         TxtNomeAutor.setText(livro.getAutor().getNome());
         TxtSobreNomeAutor.setText(livro.getAutor().getSobreNome());
         TxtNacionalidade.setText(livro.getAutor().getNacionalidade());
+
     }
     @FXML
     private void livro_selecionado(MouseEvent event){
@@ -201,6 +209,7 @@ public class FXMLControllerLivro implements Initializable {
         ObservableList<Livro> data =  FXCollections.observableList(livros);
 
         tabelaLivros.setItems(data);
+        tabelaLivros.refresh();
     }
     private void preencherTabela(){
         List<Autor> autores = dao2.buscarTodos();

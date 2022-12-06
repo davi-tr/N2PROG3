@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.*?>
@@ -9,39 +10,41 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerExemplar">
    <children>
-      <ImageView fx:id="finalizado" fitHeight="150.0" fitWidth="200.0" layoutX="606.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="file:/C:/Users/Davi/Documents/N2PROG3/carimbo.png" />
-         </image>
+      <ImageView fx:id="finalizado" fitHeight="150.0" fitWidth="200.0" layoutX="616.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <viewport>
             <Rectangle2D />
          </viewport>
+         <image>
+            <Image url="file:/C:/Users/Davi/Documents/N2PROG3/carimbo.png" />
+         </image>
       </ImageView>
       <Button id="button" fx:id="BtnSalvar" layoutX="804.0" layoutY="107.0" mnemonicParsing="false" onAction="#Gravar_Click" style="-fx-background-color: green;" text="Salvar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
       <Label layoutX="182.0" layoutY="33.0" text="Exemplares" />
-      <Button id="button" fx:id="BtnIncluir" disable="true" focusTraversable="false" layoutX="62.0" layoutY="594.0" mnemonicParsing="false" onAction="#Incluir_Click" style="-fx-background-color: cyan;" text="Incluir">
+      <Button id="button" fx:id="BtnIncluir" disable="true" focusTraversable="false" layoutX="21.0" layoutY="594.0" mnemonicParsing="false" onAction="#Incluir_Click" style="-fx-background-color: cyan;" text="Incluir">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button id="button" fx:id="BtnAlterar" disable="true" layoutX="189.0" layoutY="594.0" mnemonicParsing="false" onAction="#Editar_Click" style="-fx-background-color: yellow;" text="Editar">
+      <Button id="button" fx:id="BtnAlterar" disable="true" layoutX="218.0" layoutY="594.0" mnemonicParsing="false" onAction="#Editar_Click" style="-fx-background-color: yellow;" text="Editar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button id="button" fx:id="BtnExcluir" disable="true" layoutX="307.0" layoutY="594.0" mnemonicParsing="false" onAction="#Excluir_Click" style="-fx-background-color: red;" text="Apagar">
+      <Button id="button" fx:id="BtnExcluir" disable="true" layoutX="408.0" layoutY="594.0" mnemonicParsing="false" onAction="#Excluir_Click" style="-fx-background-color: red;" text="Apagar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TableView fx:id="tabelaExemplar" layoutX="62.0" layoutY="59.0" onKeyPressed="#keyPressed_teclaSelecionada" onMouseClicked="#livro_selecionado" prefHeight="511.0" prefWidth="300.0">
+      <TableView fx:id="tabelaExemplar" layoutX="21.0" layoutY="55.0" onKeyPressed="#keyPressed_teclaSelecionada_exemplar" onMouseClicked="#exemplar_selecionado" prefHeight="511.0" prefWidth="464.0">
         <columns>
-          <TableColumn fx:id="idLivro" prefWidth="58.0" text="ID" />
-          <TableColumn fx:id="titulo" prefWidth="128.0" text="Titulo" />
-            <TableColumn fx:id="nomeDoAutor" prefWidth="113.0" text="Nome do Autor" />
+          <TableColumn fx:id="idExemplar" prefWidth="58.0" text="ID" />
+          <TableColumn fx:id="titulo" prefWidth="108.0" text="Titulo" />
+            <TableColumn fx:id="nomeDoAutor" prefWidth="109.0" text="Nome do Autor" />
+            <TableColumn fx:id="qtd" prefWidth="54.0" text="Quantidade" />
+            <TableColumn fx:id="data" prefWidth="134.0" text="Data" />
         </columns>
       </TableView>
       <Button id="button" fx:id="BtnCancelar" disable="true" layoutX="552.0" layoutY="107.0" mnemonicParsing="false" onAction="#Cancelar_Click" style="-fx-background-color: red;" text="Cancelar">
@@ -54,6 +57,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ComboBox fx:id="cboLivros" layoutX="552.0" layoutY="59.0" prefHeight="25.0" prefWidth="300.0" />
+      <ComboBox fx:id="cboLivros" layoutX="552.0" layoutY="59.0" onAction="#livro_selecionado" prefHeight="25.0" prefWidth="300.0" promptText="Livros" />
+      <Label layoutX="562.0" layoutY="358.0" text="Nacionalidade do autor" />
+      <TextField fx:id="TxtNacionalidade" disable="true" layoutX="694.0" layoutY="354.0" />
+      <Label layoutX="562.0" layoutY="324.0" text="Sobrenome do Autor" />
+      <TextField fx:id="TxtSobreNomeAutor" disable="true" layoutX="694.0" layoutY="320.0" />
+      <Label layoutX="562.0" layoutY="289.0" text="Nome do Autor" />
+      <TextField fx:id="TxtNomeAutor" disable="true" layoutX="694.0" layoutY="285.0" />
+      <TextField fx:id="TxtTitulo" disable="true" layoutX="694.0" layoutY="251.0" />
+      <Label layoutX="562.0" layoutY="255.0" text="Titulo do Livro" />
+      <TextField fx:id="txtQuantidade" alignment="CENTER" disable="true" layoutX="789.0" layoutY="187.0" prefHeight="25.0" prefWidth="54.0" />
+      <Label fx:id="labelQtd" layoutX="562.0" layoutY="191.0" text="Quantidade de Exemplares" />
    </children>
 </Pane>

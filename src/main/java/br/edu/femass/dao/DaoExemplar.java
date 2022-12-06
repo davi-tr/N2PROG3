@@ -9,7 +9,7 @@ import java.util.List;
 public class DaoExemplar extends Dao<Exemplar> {
 
     public List<Exemplar> buscarTodos(){
-        return em.createQuery("select e from Exemplar e order by e.titulo").getResultList();
+        return em.createQuery("select e from Exemplar e order by e.id").getResultList();
     }
     
 }

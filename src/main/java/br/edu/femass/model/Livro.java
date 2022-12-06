@@ -60,6 +60,6 @@ public class Livro {
 
     @Override
     public String toString() {
-        return this.titulo + " | " + this.autor;
+        return this.titulo;
     }
 }

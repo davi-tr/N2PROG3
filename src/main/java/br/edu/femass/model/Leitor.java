@@ -3,7 +3,7 @@ package br.edu.femass.model;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Leitor {
 
     @Id
@@ -56,4 +56,8 @@ public class Leitor {
         this.endereco = endereco;
     }
 
+    @Override
+    public String toString() {
+        return nome + " " + id ;
+    }
 }
