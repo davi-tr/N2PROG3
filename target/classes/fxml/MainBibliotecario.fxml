@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="244.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerMainBibliotecario">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerMainBibliotecario">
    <children>
-      <Button fx:id="BtnCadastrarLivro" layoutX="54.0" layoutY="64.0" mnemonicParsing="false" onAction="#livroCadastro" prefHeight="25.0" prefWidth="134.0" text="Cadastrar Livro" />
-      <Button fx:id="BtnCadastrarAutor" layoutX="54.0" layoutY="28.0" mnemonicParsing="false" onAction="#autorCadastro" prefHeight="25.0" prefWidth="134.0" text="Cadastrar Autor" />
+      <Button id="button" fx:id="BtnCadastrarLivro" layoutX="88.0" layoutY="113.0" mnemonicParsing="false" onAction="#livroCadastro" prefHeight="81.0" prefWidth="134.0" style="-fx-background-color: #212435;" text="Cadastrar Livro" textFill="WHITE" />
+      <Button id="button" fx:id="BtnCadastrarAutor" layoutX="88.0" layoutY="14.0" mnemonicParsing="false" onAction="#autorCadastro" prefHeight="81.0" prefWidth="134.0" style="-fx-background-color: #212435;" text="Cadastrar Autor" textFill="WHITE" />
+      <Button id="button" fx:id="BtnCadastrarExemplar" layoutX="88.0" layoutY="211.0" mnemonicParsing="false" onAction="#exemplarCadastro" prefHeight="81.0" prefWidth="134.0" style="-fx-background-color: #212435;" text="Cadastrar Exemplar" textFill="WHITE" />
    </children>
 </Pane>

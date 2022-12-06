@@ -52,6 +52,22 @@ public class FXMLControllerMainAtendente implements Initializable {
             System.out.println(e.getMessage());
         }
     }
+    @FXML
+    void emprestimoCadastro(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/GuiEmprestimoALuno.fxml"));
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("/styles/Styles.css");
+            scene.getRoot().setStyle("-fx-font-family: 'serif'");
+
+            Stage stage = new Stage();
+            stage.setTitle("Emprestimo exemplar para aluno");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

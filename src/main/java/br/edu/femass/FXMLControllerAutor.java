@@ -95,6 +95,7 @@ public class FXMLControllerAutor implements Initializable {
         autor =  new Autor();
         TxtNacionalidade.setText("");
         TxtNome.setText("");
+        TxtSobrenome.setText("");
         TxtNome.requestFocus();
 
     }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerDevolverAluno">
+   <children>
+      <ImageView fx:id="finalizado" fitHeight="150.0" fitWidth="200.0" layoutX="861.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+         <image>
+            <Image url="@../../../../../../Downloads/carimbo%20devolvido.png" />
+         </image>
+      </ImageView>
+      <Button id="button" fx:id="BtnSalvar" layoutX="1042.0" layoutY="103.0" mnemonicParsing="false" onAction="#Gravar_Click" style="-fx-background-color: green;" text="Salvar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label layoutX="326.0" layoutY="33.0" text="Emprestimos" />
+      <Button id="button" fx:id="BtnIncluir" disable="true" focusTraversable="false" layoutX="21.0" layoutY="594.0" mnemonicParsing="false" onAction="#Incluir_Click" style="-fx-background-color: cyan;" text="Incluir">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button id="button" fx:id="BtnAlterar" disable="true" layoutX="337.0" layoutY="594.0" mnemonicParsing="false" onAction="#Editar_Click" style="-fx-background-color: yellow;" text="Editar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button id="button" fx:id="BtnExcluir" disable="true" layoutX="644.0" layoutY="594.0" mnemonicParsing="false" onAction="#Excluir_Click" style="-fx-background-color: red;" text="Apagar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TableView fx:id="tabelaEmprestimos" layoutX="21.0" layoutY="55.0" onKeyPressed="#keyPressed_teclaSelecionada_exemplar" onMouseClicked="#exemplar_selecionado" prefHeight="511.0" prefWidth="678.0">
+        <columns>
+          <TableColumn fx:id="idEmprestimo" prefWidth="58.0" text="ID" />
+          <TableColumn fx:id="titulo" prefWidth="108.0" text="Titulo" />
+            <TableColumn fx:id="nomeDoAutor" prefWidth="109.0" text="Nome do Autor" />
+            <TableColumn fx:id="data" prefWidth="134.0" text="Data Aquisição" />
+            <TableColumn fx:id="devolucao" prefWidth="134.0" text="Devolução" />
+            <TableColumn fx:id="devolucaoPrevista" prefWidth="134.0" text="Devolução Prevista" />
+        </columns>
+      </TableView>
+      <Button id="button" fx:id="BtnCancelar" disable="true" layoutX="790.0" layoutY="103.0" mnemonicParsing="false" onAction="#Cancelar_Click" style="-fx-background-color: red;" text="Cancelar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button id="button" fx:id="BtnVoltar" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#Voltar_Click" style="-fx-background-color: orange;" text="Voltar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ComboBox fx:id="cboAlunos" layoutX="790.0" layoutY="55.0" onAction="#aluno_selecionado" prefHeight="25.0" prefWidth="300.0" promptText="Nome Aluno" />
+      <Label layoutX="800.0" layoutY="397.0" text="Prazo de devolução" />
+      <TextField fx:id="TxtPrazo" editable="false" layoutX="932.0" layoutY="393.0" />
+      <Label layoutX="800.0" layoutY="363.0" text="Telefone" />
+      <TextField fx:id="TxtTelefone" editable="false" layoutX="932.0" layoutY="359.0" />
+      <Label layoutX="800.0" layoutY="328.0" text="Endereço" />
+      <TextField fx:id="TxtEndereco" editable="false" layoutX="932.0" layoutY="324.0" />
+      <TextField fx:id="TxtNome" editable="false" layoutX="932.0" layoutY="290.0" />
+      <Label layoutX="800.0" layoutY="294.0" text="Nome" />
+      <TextField fx:id="TxtExemplares" alignment="CENTER" disable="true" layoutX="932.0" layoutY="183.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label fx:id="labelQtd" layoutX="800.0" layoutY="187.0" text="Exemplares disponiveis" />
+      <Label fx:id="labelQtd1" layoutX="800.0" layoutY="239.0" text="Matricula" />
+      <TextField fx:id="TxtMat" alignment="CENTER" editable="false" layoutX="932.0" layoutY="235.0" prefHeight="25.0" prefWidth="149.0" text="Aluno" />
+   </children>
+</Pane>

@@ -16,12 +16,11 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 // TODO: 04/12/2022 Finalizar implementação classe Exemplar
-public class FXMLControllerEmprestimo implements Initializable {
+public class FXMLControllerDevolverAluno implements Initializable {
 
     @FXML
     private Button BtnIncluir;

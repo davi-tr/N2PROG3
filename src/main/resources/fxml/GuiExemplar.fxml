@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerExemplar">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="652.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerExemplar">
    <children>
       <ImageView fx:id="finalizado" fitHeight="150.0" fitWidth="200.0" layoutX="616.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <viewport>
@@ -22,7 +26,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label layoutX="182.0" layoutY="33.0" text="Exemplares" />
+      <Label layoutX="211.0" layoutY="33.0" text="Exemplares" />
       <Button id="button" fx:id="BtnIncluir" disable="true" focusTraversable="false" layoutX="21.0" layoutY="594.0" mnemonicParsing="false" onAction="#Incluir_Click" style="-fx-background-color: cyan;" text="Incluir">
          <cursor>
             <Cursor fx:constant="HAND" />

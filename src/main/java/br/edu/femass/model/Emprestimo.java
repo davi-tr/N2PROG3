@@ -16,6 +16,8 @@ public class Emprestimo {
     protected LocalDate dataEmprestimo;
     protected LocalDate dataDevolucaoPrevista;
     protected LocalDate dataDevolucao;
+    protected String titulo;
+    protected String nomeDoautor;
     protected Integer prazo;
 
     protected Integer selected;
@@ -29,6 +31,20 @@ public class Emprestimo {
 
     }
 
+    public Emprestimo(Exemplar exemplar, Leitor leitor){
+        this.dataEmprestimo = LocalDate.now();
+        this.exemplar = exemplar;
+        this.leitor = leitor;
+    }
+
+    public String getTitulo() {
+        return exemplar.getTitulo();
+    }
+
+    public String getNomeDoautor() {
+        return exemplar.getNomeDoautor();
+    }
+
     public Integer getPrazo() {
         return leitor.getPrazoMaximoDev();
     }
@@ -39,12 +55,6 @@ public class Emprestimo {
 
     public void setSelected(Integer selected) {
         this.selected = selected;
-    }
-
-    public Emprestimo(Exemplar exemplar, Leitor leitor){
-        this.dataEmprestimo = LocalDate.now();
-        this.exemplar = exemplar;
-        this.leitor = leitor;
     }
 
     public Exemplar getExemplar() {
