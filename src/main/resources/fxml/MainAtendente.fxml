@@ -5,8 +5,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="296.0" prefWidth="274.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerMainAtendente">
    <children>
-      <Button id="button" fx:id="BtnCadastrarProfessor" layoutX="70.0" layoutY="108.0" mnemonicParsing="false" onAction="#professorCadastro" prefHeight="81.0" prefWidth="134.0" style="-fx-background-color: #911722;" text="Cadastrar Professor" textFill="WHITE" />
-      <Button id="button" fx:id="BtnCadastrarAluno" layoutX="70.0" layoutY="14.0" mnemonicParsing="false" onAction="#alunoCadastro" prefHeight="81.0" prefWidth="134.0" style="-fx-background-color: #911722;" text="Cadastrar Aluno" textFill="WHITE" />
-      <Button id="button" fx:id="BtnEmprestimo" layoutX="70.0" layoutY="201.0" mnemonicParsing="false" onAction="#emprestimoCadastro" prefHeight="81.0" prefWidth="134.0" style="-fx-background-color: #911722;" text="Emprestimo Exemplar para Aluno" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+      <Button id="button" fx:id="BtnCadastrarProfessor" layoutX="55.0" layoutY="108.0" mnemonicParsing="false" onAction="#professorCadastro" prefHeight="81.0" prefWidth="164.0" style="-fx-background-color: #911722;" text="Cadastrar Professor" textFill="WHITE" />
+      <Button id="button" fx:id="BtnCadastrarAluno" layoutX="55.0" layoutY="14.0" mnemonicParsing="false" onAction="#alunoCadastro" prefHeight="81.0" prefWidth="164.0" style="-fx-background-color: #911722;" text="Cadastrar Aluno" textFill="WHITE" />
+      <Button id="button" fx:id="BtnEmprestimo" layoutX="55.0" layoutY="201.0" mnemonicParsing="false" onAction="#emprestimoCadastro" prefHeight="81.0" prefWidth="164.0" style="-fx-background-color: #911722;" text="Emprestimo Exemplar para Aluno" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
    </children>
 </Pane>

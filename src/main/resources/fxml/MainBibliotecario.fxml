@@ -5,8 +5,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.FXMLControllerMainBibliotecario">
    <children>
-      <Button id="button" fx:id="BtnCadastrarLivro" layoutX="88.0" layoutY="113.0" mnemonicParsing="false" onAction="#livroCadastro" prefHeight="81.0" prefWidth="134.0" style="-fx-background-color: #212435;" text="Cadastrar Livro" textFill="WHITE" />
-      <Button id="button" fx:id="BtnCadastrarAutor" layoutX="88.0" layoutY="14.0" mnemonicParsing="false" onAction="#autorCadastro" prefHeight="81.0" prefWidth="134.0" style="-fx-background-color: #212435;" text="Cadastrar Autor" textFill="WHITE" />
-      <Button id="button" fx:id="BtnCadastrarExemplar" layoutX="88.0" layoutY="211.0" mnemonicParsing="false" onAction="#exemplarCadastro" prefHeight="81.0" prefWidth="134.0" style="-fx-background-color: #212435;" text="Cadastrar Exemplar" textFill="WHITE" />
+      <Button id="button" fx:id="BtnCadastrarLivro" layoutX="74.0" layoutY="117.0" mnemonicParsing="false" onAction="#livroCadastro" prefHeight="81.0" prefWidth="161.0" style="-fx-background-color: #212435;" text="Cadastrar Livro" textFill="WHITE" />
+      <Button id="button" fx:id="BtnCadastrarAutor" layoutX="74.0" layoutY="18.0" mnemonicParsing="false" onAction="#autorCadastro" prefHeight="81.0" prefWidth="161.0" style="-fx-background-color: #212435;" text="Cadastrar Autor" textFill="WHITE" />
+      <Button id="button" fx:id="BtnCadastrarExemplar" layoutX="74.0" layoutY="215.0" mnemonicParsing="false" onAction="#exemplarCadastro" prefHeight="81.0" prefWidth="161.0" style="-fx-background-color: #212435;" text="Cadastrar Exemplar" textFill="WHITE" />
    </children>
 </Pane>
